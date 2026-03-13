@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}html, body {
+    overflow-x: hidden;
+}
+
+.topbar{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 8px 0;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    margin-left: 20%;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    list-style: none;
+    gap: 3%;
+}
+
+.input-search{
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.mid{
+    display: flex;
+    gap: 0.5%;
+}
+
+.mid-img {
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products{
+    display: flex;
+    gap: 0.5%;
+}
+
+.products img{
+    width: 100%;
+}
+
+.lastimg img{
+    width: 100%;
+}
+
+.leftimg{
+    display: flex;
+    margin-top: 2%;
+}
+
+.ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    gap: 10px;
+}
+
+.ctn a {
+    color: black;
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*        FOOTER TOP         */
+/* ========================= */
+
+.footer {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    padding: 20px 8%;
+    width: 100%;
+}
+
+.footer1 img {
+    width: 150px;
+}
+
+.ic i {
+    margin: 0 5px;
+}
+
+.area {
+    font-weight: bold;
+}
+
+/* ========================= */
+/*      FINAL FOOTER         */
+/* ========================= */
+
+.final_footer{
+    display: flex;
+    justify-content: space-between;   /* makes it horizontal */
+    align-items: flex-start;
+    width: 100%;
+    padding: 60px 8%;
+    background-color: black;
+    color: white;
+}
+
+/* All footer columns */
+.final_footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Remove bullets */
+.final_footer li {
+    list-style: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.final_footer li:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*  JOIN TISSOT FAMILY PART  */
+/* ========================= */
+
+.footer_lists5 {
+    width: 300px;
+}
+
+.footer_lists5 h2 {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.email-box {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 12px;
+    color: white;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.email-box::placeholder {
+    color: white;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+    font-size: 20px;
+}
+
+.social-icons i {
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    opacity: 0.7;
+}
+.ic {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 30px 0;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.icon-box i {
+    font-size: 22px;
+}
