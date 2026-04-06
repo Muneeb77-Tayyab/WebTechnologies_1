@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Website</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- jQuery + Slick -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar" id="topbar">
+        Enjoy Free shipping And returns on all watch orders
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo">
+        <li>Brand</li>
+        <li>Customer Service</li>
+        <img src="/images/idAinKNK5p_logos.png" alt="Logo" width="10%">
+        <input type="text" placeholder="Search" class="input-search">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa fa-map-marker"></i>
+        <i class="fa-regular fa-clock"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="menu-icon" id="menu-icon">☰</div>
+        <ul id="nav-links">
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Collection</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Straps</a></li>
+        </ul>
+    </div>
+
+    <!-- Header Image -->
+    <div class="headerimg">
+        <img src="/images/headerimg.png" alt="Header Image">
+    </div>
+
+    <!-- Mid Section -->
+    <div class="mid">
+        <img src="/images/white-boy.png" alt="">
+        <img src="/images/black-girl.png" alt="">
+    </div>
+
+    <!-- Banner -->
+    <div class="mid-img">
+        <img src="/images/body-img.png" alt="">
+    </div>
+
+    <!-- Products Carousel -->
+    <div class="products-container">
+        <button class="prev">Prev</button>
+
+        <div class="products">
+            <div class="product">
+                <img src="/images/p1.png" alt="">
+                <strong>Tissot PRX Titanium 38MM</strong>
+                <p>$975</p>
+            </div>
+            <div class="product">
+                <img src="/images/p2.png" alt="">
+                <strong>Tissot PRX Titanium 38MM</strong>
+                <p>$975</p>
+            </div>
+            <div class="product">
+                <img src="/images/p3.png" alt="">
+                <strong>Tissot PRX 40MM</strong>
+                <p>$930</p>
+            </div>
+            <div class="product">
+                <img src="/images/p4.png" alt="">
+                <strong>Tissot PRX 35MM</strong>
+                <p>$1011</p>
+            </div>
+        </div>
+
+        <button class="next">Next</button>
+        <div class="slide-counter">Showing 1 of 4</div>
+    </div>
+
+    <!-- Last Image -->
+    <div class="lastimg">
+        <img src="/images/last-img.png" alt="">
+    </div>
+
+    <!-- Events Section -->
+    <div class="leftimg">
+        <div class="limg">
+            <img src="/images/leftimg.png" alt="">
+        </div>
+        <div class="ctn">
+            <h1>Events</h1>
+            <p>
+                Enter for a chance to win exciting prizes such as Special Collection watches,
+                NBA Game Tickets, Official Autographed Merchandise and more.
+            </p>
+            <a href="#">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer1">
+            <img src="/images/idAinKNK5p_logos.png" alt="">
+        </div>
+        <div class="ic">
+            <div class="icon-box">
+                <i class="fas fa-rotate-left"></i>
+                <p>Easy returns</p>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-lock"></i>
+                <p>Safe payments</p>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-truck"></i>
+                <p>Free delivery</p>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-plus-circle"></i>
+                <p>Swiss watches</p>
+            </div>
+        </div>
+        <div class="area">ENG</div>
+    </div>
+
+    <hr>
+
+    <!-- Final Footer -->
+    <div class="final_footer">
+        <div>
+            <ul>
+                <li>About Us</li>
+                <li>Men</li>
+                <li>Women</li>
+                <li>Collection</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>Find Store</li>
+                <li>Customer Service</li>
+                <li>Register Watch</li>
+            </ul>
+        </div>
+        <div class="footer_lists5">
+            <h2>Join the Tissot family</h2>
+            <input type="email" placeholder="EMAIL ADDRESS" class="email-box">
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-x-twitter"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Topbar rotating messages
+        const messages = [
+            "Enjoy Free shipping And returns on all watch orders",
+            "Get 20% OFF on selected watches",
+            "Limited Time Offer - Shop Now!"
+        ];
+        let index = 0;
+        const topbar = document.getElementById("topbar");
+        setInterval(() => {
+            topbar.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % messages.length;
+                topbar.innerText = messages[index];
+                topbar.style.opacity = 1;
+            }, 500);
+        }, 3000);
+
+        // Hamburger menu toggle
+        const menuIcon = document.getElementById("menu-icon");
+        const navLinks = document.getElementById("nav-links");
+        menuIcon.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Optional bonus: close menu when a link is clicked
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Products carousel using Slick
+        $(document).ready(function(){
+            var $carousel = $('.products');
+            $carousel.slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: $('.prev'),
+                nextArrow: $('.next'),
+                autoplay: true,
+                autoplaySpeed: 5000,
+                pauseOnHover: true,
+                responsive: [
+                    { breakpoint: 1024, settings: { slidesToShow: 3 } },
+                    { breakpoint: 768, settings: { slidesToShow: 2 } },
+                    { breakpoint: 480, settings: { slidesToShow: 1 } }
+                ]
+            });
+
+            function updateCounter(current){
+                var total = $carousel.slick('getSlick').slideCount;
+                $('.slide-counter').text('Showing ' + (current+1) + ' of ' + total);
+            }
+            updateCounter(0);
+            $carousel.on('afterChange', function(e, slick, current){
+                updateCounter(current);
+            });
+        });
+    </script>
+
+</body>
+</html>
