@@ -1,0 +1,62 @@
+<div class="admin-card" style="max-width:900px;margin:0 auto;">
+  <h3 style="margin-bottom:1.5rem;">Add New Product</h3>
+  <form action="/admin/products" method="POST" enctype="multipart/form-data">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+
+      <div style="margin-bottom:1rem;">
+        <label for="name" style="display:block;margin-bottom:0.5rem;font-weight:600;">Product Name <span style="color:red">*</span></label>
+        <input type="text" id="name" name="name" required
+          style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;">
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label for="price" style="display:block;margin-bottom:0.5rem;font-weight:600;">Price ($) <span style="color:red">*</span></label>
+        <input type="number" id="price" name="price" step="0.01" min="0" required
+          style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;">
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label for="stock" style="display:block;margin-bottom:0.5rem;font-weight:600;">Stock Quantity</label>
+        <input type="number" id="stock" name="stock" min="0" value="0"
+          style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;">
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label for="rating" style="display:block;margin-bottom:0.5rem;font-weight:600;">Rating (0–5)</label>
+        <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" value="0"
+          style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;">
+      </div>
+
+    </div>
+
+    <div style="margin-bottom:1rem;">
+      <label for="category" style="display:block;margin-bottom:0.5rem;font-weight:600;">Category <span style="color:red">*</span></label>
+      <select id="category" name="category" required
+        style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;">
+        <option value="" disabled selected>Select a category</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat._id %>"><%= cat.name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div style="margin-bottom:1rem;">
+      <label for="image" style="display:block;margin-bottom:0.5rem;font-weight:600;">Product Image</label>
+      <input type="file" id="image" name="image" accept="image/*"
+        style="width:100%;padding:0.5rem;border:1px solid #cbd5e0;border-radius:4px;background:#f8fafc;">
+      <small style="color:#64748b;">Upload file OR provide an external URL below</small>
+      <input type="text" name="image_url" placeholder="https://..." style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;margin-top:0.5rem;">
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <label for="description" style="display:block;margin-bottom:0.5rem;font-weight:600;">Description</label>
+      <textarea id="description" name="description" rows="4"
+        style="width:100%;padding:0.75rem;border:1px solid #cbd5e0;border-radius:4px;resize:vertical;"></textarea>
+    </div>
+
+    <div style="display:flex;gap:1rem;">
+      <button type="submit" class="btn btn-primary">Create Product</button>
+      <a href="/admin/products" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

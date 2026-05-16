@@ -1,0 +1,52 @@
+<div class="admin-card">
+  <div style="margin-bottom: 1.5rem;">
+    <h3 style="margin: 0;">Customer Orders</h3>
+  </div>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (orders && orders.length > 0) { %>
+        <% orders.forEach(order => { %>
+          <tr>
+            <td><code>#<%= order._id.toString().substring(0, 8) %>...</code></td>
+            <td><%= order.user.name %></td>
+            <td>$<%= order.total.toFixed(2) %></td>
+            <td>
+              <span class="badge" style="background: <%= 
+                order.status === 'pending' ? '#fef3c7' : 
+                order.status === 'shipped' ? '#dbeafe' : 
+                order.status === 'delivered' ? '#dcfce7' : '#fee2e2' 
+              %>; color: <%= 
+                order.status === 'pending' ? '#92400e' : 
+                order.status === 'shipped' ? '#1e40af' : 
+                order.status === 'delivered' ? '#166534' : '#991b1b' 
+              %>; text-transform: capitalize;">
+                <%= order.status %>
+              </span>
+            </td>
+            <td><%= order.createdAt.toLocaleDateString() %></td>
+            <td>
+              <a href="/admin/orders/<%= order._id %>" class="btn btn-sm btn-secondary" title="View Details">
+                <i class="fas fa-eye"></i> Details
+              </a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="6" style="text-align: center; padding: 2rem; color: #94a3b8;">No orders found.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,65 @@
+<div class="admin-card">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+    <h3 style="margin: 0;">Product Categories</h3>
+    <a href="/admin/categories/new" class="btn btn-primary">Add New Category</a>
+  </div>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>
+          <a href="/admin/categories?sort=name&order=<%= sortField === 'name' && sortOrder === 'asc' ? 'desc' : 'asc' %>" style="color: inherit; text-decoration: none;">
+            Name <%= sortField === 'name' ? (sortOrder === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>Slug</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (categories && categories.length > 0) { %>
+        <% categories.forEach(category => { %>
+          <tr>
+            <td><strong><%= category.name %></strong></td>
+            <td><code><%= category.slug %></code></td>
+            <td>
+              <div style="display: flex; gap: 0.5rem;">
+                <a href="/admin/categories/edit/<%= category._id %>" class="btn btn-sm btn-secondary" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <form action="/admin/categories/delete/<%= category._id %>" method="POST" onsubmit="return confirm('Are you sure?')">
+                  <button type="submit" class="btn btn-sm" style="background: #ef4444; color: white;" title="Delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="3" style="text-align: center; padding: 2rem; color: #94a3b8;">No categories found.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <% if (totalPages > 1) { %>
+    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem;">
+      <% if (currentPage > 1) { %>
+        <a href="/admin/categories?page=<%= currentPage - 1 %>&sort=<%= sortField %>&order=<%= sortOrder %>" class="btn btn-sm btn-secondary">Prev</a>
+      <% } %>
+      
+      <% for(let i=1; i<=totalPages; i++) { %>
+        <a href="/admin/categories?page=<%= i %>&sort=<%= sortField %>&order=<%= sortOrder %>" 
+           class="btn btn-sm <%= i === currentPage ? 'btn-primary' : 'btn-secondary' %>">
+          <%= i %>
+        </a>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+        <a href="/admin/categories?page=<%= currentPage + 1 %>&sort=<%= sortField %>&order=<%= sortOrder %>" class="btn btn-sm btn-secondary">Next</a>
+      <% } %>
+    </div>
+  <% } %>
+</div>

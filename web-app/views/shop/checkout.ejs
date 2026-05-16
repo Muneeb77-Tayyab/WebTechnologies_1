@@ -1,0 +1,23 @@
+<div class="container page-header">
+  <h2>Checkout</h2>
+</div>
+
+<div class="container checkout-container" style="max-width: 600px; margin: 0 auto;">
+  <p>Please enter your shipping information to complete the order.</p>
+  
+  <form action="/checkout" method="POST" style="margin-top: 2rem;">
+    <div style="margin-bottom: 1rem;">
+      <label for="address" style="display: block; margin-bottom: 0.5rem;">Address</label>
+      <input type="text" id="address" name="address" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 4px;">
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <label for="city" style="display: block; margin-bottom: 0.5rem;">City</label>
+      <input type="text" id="city" name="city" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 4px;">
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <label for="zip" style="display: block; margin-bottom: 0.5rem;">ZIP Code</label>
+      <input type="text" id="zip" name="zip" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 4px;">
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Complete Order</button>
+  </form>
+</div>
