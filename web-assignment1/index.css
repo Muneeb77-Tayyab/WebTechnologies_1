@@ -1,0 +1,346 @@
+/* ========================= */
+/*        GLOBAL RESET       */
+/* ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================= */
+/*         TOP BAR           */
+/* ========================= */
+
+.topbar {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* ========================= */
+/*          LOGO BAR         */
+/* ========================= */
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 5%;
+    gap: 15px;
+    list-style: none;
+}
+
+.input-search {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+/* ========================= */
+/*          NAVBAR           */
+/* ========================= */
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    list-style: none;
+    gap: 20px;
+}
+
+/* ========================= */
+/*        MID SECTION        */
+/* ========================= */
+
+.mid {
+    display: flex;
+    gap: 10px;
+    padding: 0 5%;
+}
+
+.mid-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================= */
+/*        PRODUCTS           */
+/* ========================= */
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0 5%;
+}
+
+.products > div {
+    width: 23%;
+}
+
+.products img {
+    width: 100%;
+}
+
+/* ========================= */
+/*        LAST IMAGE         */
+/* ========================= */
+
+.lastimg img {
+    width: 100%;
+}
+
+/* ========================= */
+/*        LEFT SECTION       */
+/* ========================= */
+
+.leftimg {
+    display: flex;
+    margin-top: 2%;
+    padding: 0 5%;
+    gap: 20px;
+}
+
+.ctn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    gap: 10px;
+    text-align: center;
+}
+
+.ctn a {
+    color: black;
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*        FOOTER TOP         */
+/* ========================= */
+
+.footer {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    padding: 20px 8%;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer1 img {
+    width: 150px;
+}
+
+.ic {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 30px 0;
+    flex-wrap: wrap;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.icon-box i {
+    font-size: 22px;
+}
+
+.area {
+    font-weight: bold;
+}
+
+/* ========================= */
+/*      FINAL FOOTER         */
+/* ========================= */
+
+.final_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 60px 8%;
+    background-color: black;
+    color: white;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.final_footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.final_footer li {
+    list-style: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: gray;
+}
+
+.final_footer li:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/*  JOIN TISSOT FAMILY PART  */
+/* ========================= */
+
+.footer_lists5 {
+    width: 300px;
+}
+
+.footer_lists5 h2 {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.email-box {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 12px;
+    color: white;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.email-box::placeholder {
+    color: white;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+    font-size: 20px;
+}
+
+.social-icons i {
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    opacity: 0.7;
+}
+
+/* ========================= */
+/*       RESPONSIVE          */
+/* ========================= */
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mid {
+        flex-direction: column;
+    }
+
+    .products > div {
+        width: 100%;
+    }
+
+    .leftimg {
+        flex-direction: column;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .final_footer {
+        flex-direction: column;
+    }
+
+    .footer_lists5 {
+        width: 100%;
+    }
+}
+
+/* 📲 Tablet */
+@media (max-width: 1024px) {
+
+    .products > div {
+        width: 48%;
+    }
+
+    .mid {
+        flex-direction: column;
+    }
+
+    .leftimg {
+        flex-direction: column;
+    }
+}
+/* ========================= */
+/*     HAMBURGER MENU        */
+/* ========================= */
+
+.menu-icon {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+
+    .menu-icon {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    #nav-links.active {
+        display: flex;
+    }
+}

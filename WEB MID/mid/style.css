@@ -1,0 +1,409 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Helvetica Neue", Arial, sans-serif;
+    overflow-x:hidden;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:10px;
+    font-size:13px;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:transparent;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    transition:0.4s ease;
+}
+
+.header.scrolled{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    padding:10px 8%;
+}
+
+.logo img{
+    width:120px;
+    transition:0.4s;
+}
+
+.header.scrolled .logo img{
+    width:90px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    gap:30px;
+    position:relative;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:black;
+    font-size:15px;
+    position:relative;
+}
+
+/* underline effect */
+.navbar a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:1px;
+    background:black;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* DROPDOWN */
+
+.dropdown{
+    position:absolute;
+    top:30px;
+    background:white;
+    display:none;
+    flex-direction:column;
+    padding:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.navbar a:hover .dropdown{
+    display:flex;
+}
+
+/* ICONS */
+
+.icons{
+    display:flex;
+    gap:20px;
+    font-size:18px;
+}
+
+/* HAMBURGER */
+
+.menu-icon{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    height:100vh;
+    background:url("images/headerimg.png") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:55px;
+}
+
+.hero-content p{
+    margin:10px 0;
+}
+
+.hero-content button{
+    padding:12px 25px;
+    border:none;
+    background:black;
+    color:white;
+    cursor:pointer;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    gap:20px;
+    padding:60px 8%;
+}
+
+.category-card{
+    position:relative;
+    flex:1;
+    overflow:hidden;
+}
+
+.category-card img{
+    width:100%;
+    transition:0.5s;
+}
+
+.category-card:hover img{
+    transform:scale(1.1);
+}
+
+.category-card h2{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    color:white;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-section{
+    padding:60px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product-card{
+    text-align:center;
+    padding:15px;
+    border:1px solid #eee;
+    transition:0.4s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-card img{
+    width:100%;
+}
+
+/* ================= BANNER ================= */
+
+.banner{
+    height:60vh;
+    background:url("images/body-img.png") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.banner-content h1{
+    font-size:45px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:black;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    padding:50px 8%;
+    flex-wrap:wrap;
+}
+
+.footer-box{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-box a{
+    color:gray;
+    text-decoration:none;
+}
+
+.social-icons{
+    display:flex;
+    gap:15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    .menu-icon{
+        display:block;
+    }
+
+    .navbar{
+        position:fixed;
+        top:0;
+        left:-100%;
+        width:70%;
+        height:100vh;
+        background:white;
+        flex-direction:column;
+        padding-top:100px;
+        transition:0.4s;
+    }
+
+    .navbar.active{
+        left:0;
+    }
+
+    .icons{
+        display:none;
+    }
+
+    .categories{
+        flex-direction:column;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .footer{
+        flex-direction:column;
+        gap:30px;
+    }
+}
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#000;
+    color:#fff;
+    padding:80px 8% 30px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:40px;
+}
+
+/* COLUMN STYLE */
+
+.footer-col h3{
+    font-size:13px;
+    margin-bottom:20px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.footer-col a{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    margin-bottom:12px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.footer-col a:hover{
+    color:#fff;
+}
+
+/* NEWSLETTER */
+
+.footer-newsletter h2{
+    font-size:22px;
+    margin-bottom:10px;
+    font-weight:400;
+}
+
+.footer-newsletter p{
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+.footer-newsletter input{
+    width:100%;
+    padding:10px;
+    background:transparent;
+    border:1px solid #fff;
+    color:#fff;
+    margin-bottom:10px;
+    outline:none;
+}
+
+.footer-newsletter button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.footer-newsletter button:hover{
+    background:#c00;
+    color:#fff;
+}
+
+/* SOCIAL ICONS */
+
+.socials{
+    margin-top:15px;
+    display:flex;
+    gap:18px;
+    font-size:20px;
+}
+
+.socials i{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.socials i:hover{
+    color:#c00;
+}
+
+/* BOTTOM BAR */
+
+.footer-bottom{
+    margin-top:50px;
+    text-align:center;
+    font-size:12px;
+    color:#777;
+    border-top:1px solid #222;
+    padding-top:20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+    .footer-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .footer-container{
+        grid-template-columns:1fr;
+    }
+}

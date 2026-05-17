@@ -1,0 +1,57 @@
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; }
+
+/* TOPBAR */
+.topbar { background:black; color:white; text-align:center; padding:10px; transition: opacity 0.5s; }
+
+/* LOGO */
+.logo { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; flex-wrap:wrap; gap:10px; }
+.input-search { padding:5px 10px; border-radius:20px; border:1px solid black; }
+
+/* NAVBAR */
+.navbar ul { display:flex; justify-content:center; gap:20px; list-style:none; margin-top:10px; }
+.menu-icon { display:none; font-size:25px; cursor:pointer; text-align:center; }
+.navbar ul li a { text-decoration:none; color:black; padding:5px 10px; display:block; }
+
+/* HEADER / MID / BANNERS */
+img { width:100%; }
+.mid { display:flex; gap:10px; padding:0 5%; }
+.mid-img, .headerimg { padding:0 5%; }
+
+/* PRODUCTS */
+.products-container { width:90%; margin:20px auto; position:relative; text-align:center; }
+.products { display:flex; }
+.product { padding:10px; text-align:center; }
+.product img { width:100%; max-width:200px; margin-bottom:5px; transition: transform 0.3s; }
+.product:hover { transform: scale(1.05); } /* simple hover effect */
+.prev, .next { position:absolute; top:40%; background:black; color:white; border:none; padding:10px; cursor:pointer; }
+.prev { left:-50px; } .next { right:-50px; }
+.slide-counter { margin-top:10px; font-weight:bold; }
+
+/* LEFT SECTION */
+.leftimg { display:flex; padding:20px 5%; gap:20px; }
+.ctn { text-align:center; }
+
+/* FOOTER */
+.footer { background:black; color:white; padding:20px 5%; display:flex; justify-content:space-between; flex-wrap:wrap; }
+.ic { display:flex; gap:30px; }
+.icon-box { text-align:center; }
+.final_footer { background:black; color:white; display:flex; justify-content:space-between; padding:40px 5%; flex-wrap:wrap; }
+.final_footer li { list-style:none; color:gray; }
+
+/* RESPONSIVE TABLET & MOBILE */
+@media(max-width:1024px){
+    .mid { flex-direction:column; }
+    .leftimg { flex-direction:column; }
+}
+@media(max-width:768px){
+    .navbar ul { flex-direction:column; align-items:center; display:none; }
+    #nav-links.active { display:flex; }
+    .menu-icon { display:block; }
+    .product { width:100%; }
+    .prev { left:0; } .next { right:0; }
+}
+@media(max-width:480px){
+    .product img { max-width:150px; }
+}

@@ -1,0 +1,33 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:1.8rem;color:#b8960c;font-family:'Playfair Display',serif;font-weight:700;letter-spacing:4px;">TISSOT</div>
+      <div style="font-size:0.65rem;letter-spacing:3px;color:#888;text-transform:uppercase;margin-top:2px;">Swiss Watches Since 1853</div>
+    </div>
+    <h2>Create Account</h2>
+    <p>Join the TISSOT community today</p>
+
+    <form action="/auth/register" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name" placeholder="John Smith">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label for="password">Password <span style="color:#999;font-weight:400;font-size:0.75rem;">(min. 6 characters)</span></label>
+        <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password" placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-auth">Create Account</button>
+    </form>
+
+    <div class="auth-link">
+      Already have an account? <a href="/auth/login">Sign in</a>
+    </div>
+    <div class="auth-link" style="margin-top:0.5rem;">
+      <a href="/shop">← Continue browsing</a>
+    </div>
+  </div>
+</div>
