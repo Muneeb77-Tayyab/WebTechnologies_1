@@ -1,0 +1,126 @@
+<%# ── Page Header ─────────────────────────────────────────────────────── %>
+<div class="page-header">
+  <h2><%= title || 'On-Sale Products' %></h2>
+  <p>Discover our exclusive promotional items</p>
+</div>
+
+<div class="shop-container">
+  <% if (products.length > 0) { %>
+    <%# ── Product Grid ──────────────────────────────────────────────── %>
+    <div id="product-list" class="product-grid">
+      <% products.forEach(product => { %>
+        <div class="product-card onsale-item" style="display: none;">
+          <a href="/product/<%= product.slug %>">
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+          </a>
+          <div class="product-info">
+            <span class="product-category"><%= product.category ? product.category.name : '' %></span>
+            <a href="/product/<%= product.slug %>" style="text-decoration:none;color:inherit;">
+              <h3 class="product-title"><%= product.name %></h3>
+            </a>
+            <p class="product-desc"><%= product.description %></p>
+
+            <div class="rating-stars">
+              <% for(let i=1; i<=5; i++) { %><%= i <= Math.round(product.rating) ? '★' : '☆' %><% } %>
+              <span class="rating-count">(<%= product.rating.toFixed(1) %>)</span>
+            </div>
+
+            <div class="stock-status">
+              <% if (product.stock > 10) { %>
+                <span class="stock-ok">✓ In Stock</span>
+              <% } else if (product.stock > 0) { %>
+                <span class="stock-low">⚠ Only <%= product.stock %> remaining</span>
+              <% } else { %>
+                <span class="stock-none">✗ Sold Out</span>
+              <% } %>
+            </div>
+
+            <div class="product-bottom">
+              <span class="product-price">
+                <span style="color:red;font-weight:bold;margin-right:8px;">ON SALE</span>
+                $<%= product.price.toLocaleString('en-US', {minimumFractionDigits:2}) %>
+              </span>
+              <% if (product.stock > 0) { %>
+                <a href="/cart/add/<%= product._id %>" class="btn-cart">Add to Cart</a>
+              <% } else { %>
+                <span class="btn-cart-disabled">Sold Out</span>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <%# ── Pagination Controls ─────────────────────────────────────────── %>
+    <div id="pagination-controls" class="pagination" style="margin-top: 2rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+      <button id="btn-prev" class="page-btn" style="cursor: pointer;">← Previous</button>
+      <span id="page-indicator" style="font-weight: bold; color: #555;">Page 1</span>
+      <button id="btn-next" class="page-btn" style="cursor: pointer;">Next →</button>
+    </div>
+
+  <% } else { %>
+    <%# ── Empty State ─────────────────────────────────────────────────── %>
+    <div style="text-align:center;padding:4rem 2rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🏷️</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#222;margin-bottom:0.5rem;">No On-Sale Products found</h3>
+      <p style="color:#888;margin-bottom:1.5rem;">Check back later for exciting promotions.</p>
+      <a href="/shop" class="btn btn-primary">Browse All Watches</a>
+    </div>
+  <% } %>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var $products = $('.onsale-item');
+    var totalProducts = $products.length;
+    var perPage = 10;
+    var totalPages = Math.ceil(totalProducts / perPage);
+    var currentPage = 1;
+
+    function showPage(page) {
+      $products.hide();
+      var start = (page - 1) * perPage;
+      var end = start + perPage;
+      $products.slice(start, end).show();
+
+      $('#page-indicator').text('Page ' + page + ' of ' + (totalPages === 0 ? 1 : totalPages));
+
+      if (page <= 1) {
+        $('#btn-prev').prop('disabled', true).hide();
+      } else {
+        $('#btn-prev').prop('disabled', false).show();
+      }
+
+      if (page >= totalPages || totalPages === 0) {
+        $('#btn-next').prop('disabled', true).hide();
+      } else {
+        $('#btn-next').prop('disabled', false).show();
+      }
+    }
+
+    if (totalProducts > 0) {
+      showPage(currentPage);
+    } else {
+      $('#pagination-controls').hide();
+    }
+
+    $('#btn-prev').click(function(e) {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+        window.scrollTo(0, 0);
+      }
+    });
+
+    $('#btn-next').click(function(e) {
+      e.preventDefault();
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+        window.scrollTo(0, 0);
+      }
+    });
+  });
+</script>

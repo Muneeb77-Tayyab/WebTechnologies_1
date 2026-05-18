@@ -1,0 +1,137 @@
+<%# ── Page Header ─────────────────────────────────────────────────────── %>
+<div class="page-header">
+  <h2><%= title || 'Our Collection' %></h2>
+  <p>Discover precision-crafted timepieces for every wrist</p>
+</div>
+
+<div class="shop-container">
+
+  <%# ── Assignment 3: Filter Bar ──────────────────────────────────────── %>
+  <form method="GET" action="/shop" class="filter-bar">
+    <div style="display:grid;grid-template-columns:2fr 1.2fr 0.8fr 0.8fr auto;gap:1rem;align-items:end;">
+
+      <div>
+        <label>Search Watches</label>
+        <input type="text" name="q" value="<%= searchQuery %>" placeholder="e.g. Diver, Chronograph, GMT...">
+      </div>
+
+      <div>
+        <label>Category</label>
+        <select name="category">
+          <option value="">All Collections</option>
+          <% if (categories) { categories.forEach(cat => { %>
+            <option value="<%= cat.slug %>" <%= selectedCategory === cat.slug ? 'selected' : '' %>>
+              <%= cat.name %>
+            </option>
+          <% }) } %>
+        </select>
+      </div>
+
+      <div>
+        <label>Min Price ($)</label>
+        <input type="number" name="minPrice" value="<%= minPrice %>" placeholder="0" min="0" step="1">
+      </div>
+
+      <div>
+        <label>Max Price ($)</label>
+        <input type="number" name="maxPrice" value="<%= maxPrice %>" placeholder="99999" min="0" step="1">
+      </div>
+
+      <div style="display:flex;gap:0.5rem;align-items:flex-end;">
+        <button type="submit" class="btn-filter">Filter</button>
+        <a href="/shop" class="btn-clear">Clear</a>
+      </div>
+    </div>
+  </form>
+
+  <%# ── Results Info ─────────────────────────────────────────────────── %>
+  <% if (products.length > 0) { %>
+    <p style="color:#888;font-size:0.82rem;margin-bottom:1.5rem;letter-spacing:0.5px;">
+      Page <strong><%= currentPage %></strong> of <strong><%= totalPages %></strong>
+      <% if (searchQuery) { %> · Results for "<strong><%= searchQuery %></strong>"<% } %>
+      <% if (selectedCategory) { %> · Collection: <strong style="text-transform:capitalize;"><%= selectedCategory %></strong><% } %>
+    </p>
+
+    <%# ── Product Grid ──────────────────────────────────────────────── %>
+    <div class="product-grid">
+      <% products.forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product.slug %>">
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+          </a>
+          <div class="product-info">
+            <span class="product-category"><%= product.category ? product.category.name : '' %></span>
+            <a href="/product/<%= product.slug %>" style="text-decoration:none;color:inherit;">
+              <h3 class="product-title"><%= product.name %></h3>
+            </a>
+            <p class="product-desc"><%= product.description %></p>
+
+            <%# Rating stars (Assignment 3: rating field) %>
+            <div class="rating-stars">
+              <% for(let i=1; i<=5; i++) { %><%= i <= Math.round(product.rating) ? '★' : '☆' %><% } %>
+              <span class="rating-count">(<%= product.rating.toFixed(1) %>)</span>
+            </div>
+
+            <%# Stock status (Assignment 3: stock field) %>
+            <div class="stock-status">
+              <% if (product.stock > 10) { %>
+                <span class="stock-ok">✓ In Stock</span>
+              <% } else if (product.stock > 0) { %>
+                <span class="stock-low">⚠ Only <%= product.stock %> remaining</span>
+              <% } else { %>
+                <span class="stock-none">✗ Sold Out</span>
+              <% } %>
+            </div>
+
+            <div class="product-bottom">
+              <span class="product-price">$<%= product.price.toLocaleString('en-US', {minimumFractionDigits:2}) %></span>
+              <% if (product.stock > 0) { %>
+                <a href="/cart/add/<%= product._id %>" class="btn-cart">Add to Cart</a>
+              <% } else { %>
+                <span class="btn-cart-disabled">Sold Out</span>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <%# ── Pagination (Assignment 3: Prev, Page Numbers, Next) ─────────── %>
+    <% if (totalPages > 1) { %>
+      <%
+        const buildUrl = (p) => {
+          const params = new URLSearchParams();
+          params.set('page', p);
+          if (searchQuery)      params.set('q', searchQuery);
+          if (selectedCategory) params.set('category', selectedCategory);
+          if (minPrice)         params.set('minPrice', minPrice);
+          if (maxPrice)         params.set('maxPrice', maxPrice);
+          return '/shop?' + params.toString();
+        };
+      %>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="<%= buildUrl(currentPage - 1) %>" class="page-btn">← Previous</a>
+        <% } %>
+
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <a href="<%= buildUrl(i) %>" class="page-btn <%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+          <a href="<%= buildUrl(currentPage + 1) %>" class="page-btn">Next →</a>
+        <% } %>
+      </div>
+    <% } %>
+
+  <% } else { %>
+    <%# ── Empty State ─────────────────────────────────────────────────── %>
+    <div style="text-align:center;padding:4rem 2rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">⌚</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#222;margin-bottom:0.5rem;">No watches found</h3>
+      <p style="color:#888;margin-bottom:1.5rem;">Try adjusting your search terms or filters.</p>
+      <a href="/shop" class="btn btn-primary">Browse All Watches</a>
+    </div>
+  <% } %>
+
+</div>

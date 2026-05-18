@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Admin Panel' %> | Shop Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <h2>Shop Admin</h2>
+    </div>
+    <ul class="admin-nav">
+      <li><a href="/admin"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="/admin/products"><i class="fas fa-box"></i> Products</a></li>
+      <li><a href="/admin/categories"><i class="fas fa-tags"></i> Categories</a></li>
+      <li><a href="/admin/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+      <li style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+        <a href="/"><i class="fas fa-arrow-left"></i> Back to Shop</a>
+      </li>
+      <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      Logged in as:<br>
+      <strong style="color: white;"><%= user.name %></strong>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-header">
+      <h1><%= typeof title !== 'undefined' ? title : 'Dashboard' %></h1>
+      <div class="user-info">
+        <span class="badge badge-admin">Administrator Access</span>
+      </div>
+    </div>
+
+    <div class="flash-messages">
+      <% if (success_msg && success_msg.length > 0) { %>
+        <% success_msg.forEach(msg => { %>
+          <div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #a7f3d0;">
+            <%= msg %>
+          </div>
+        <% }) %>
+      <% } %>
+      <% if (error_msg && error_msg.length > 0) { %>
+        <% error_msg.forEach(msg => { %>
+          <div style="background: #fee2e2; color: #991b1b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #fecaca;">
+            <%= msg %>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+
+    <%- body %>
+  </main>
+
+  <script>
+    // Active link handler
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.admin-nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || (href !== '/admin' && currentPath.startsWith(href))) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>

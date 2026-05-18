@@ -1,0 +1,221 @@
+<style>
+  /* Tissot-style Home Redesign */
+  .hero {
+    position: relative;
+    height: 85vh;
+    background: url('https://images.unsplash.com/photo-1622434641406-a158123450f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    color: #fff;
+    margin-top: -1px; /* Remove gap */
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(17,17,17,0.8) 0%, rgba(17,17,17,0.2) 50%, transparent 100%);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+  }
+  .hero-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .btn-hero {
+    background: var(--gold-light);
+    color: var(--dark);
+    padding: 1rem 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+    border: none;
+  }
+  .btn-hero:hover {
+    background: #e6c045;
+  }
+  
+  /* Collections Section */
+  .collections {
+    padding: 6rem 20px;
+    background: #fff;
+    text-align: center;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .section-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .collection-card {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    background: #f8f8f8;
+  }
+  .collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .collection-card:hover img {
+    transform: scale(1.05);
+  }
+  .collection-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: #fff;
+    text-align: left;
+  }
+  .collection-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .collection-overlay p {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+  }
+  .collection-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .collection-link:hover {
+    color: #fff;
+  }
+
+  /* Heritage Section */
+  .heritage {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--dark);
+    color: #fff;
+  }
+  .heritage-text {
+    flex: 1 1 500px;
+    padding: 6rem 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .heritage-image {
+    flex: 1 1 500px;
+    min-height: 500px;
+    background: url('https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+  }
+  .heritage-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  .heritage-text p {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+</style>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-subtitle">Innovators by Tradition</div>
+    <h1>The Art of Watchmaking</h1>
+    <p>Discover our latest collections featuring Swiss precision, premium materials, and unparalleled craftsmanship since 1853.</p>
+    <a href="/shop" class="btn btn-hero">Explore Collections</a>
+  </div>
+</div>
+
+<section class="collections">
+  <h2 class="section-title">Featured Collections</h2>
+  <div class="section-subtitle">Find your perfect timepiece</div>
+  
+  <div class="collection-grid">
+    <a href="/shop?category=chronograph" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sport Watches">
+      <div class="collection-overlay">
+        <h3>T-Sport</h3>
+        <p>Built for performance and precision</p>
+        <span class="collection-link">Discover Now &rarr;</span>
+      </div>
+    </a>
+    <a href="/shop?category=dress" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classic Watches">
+      <div class="collection-overlay">
+        <h3>T-Classic</h3>
+        <p>Timeless elegance for every occasion</p>
+        <span class="collection-link">Discover Now &rarr;</span>
+      </div>
+    </a>
+    <a href="/shop?category=diver" class="collection-card">
+      <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Diving Watches">
+      <div class="collection-overlay">
+        <h3>Seastar</h3>
+        <p>Water resistance up to 300 meters</p>
+        <span class="collection-link">Discover Now &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="heritage">
+  <div class="heritage-text">
+    <div class="hero-subtitle">Our Heritage</div>
+    <h2>Swiss Watches Since 1853</h2>
+    <p>TISSOT has been pioneering craftsmanship and innovation since its foundation in Le Locle, in the Swiss Jura mountains. Our commitment to creating accessible luxury has made us a leader in the traditional Swiss watch industry.</p>
+    <p>Every timepiece we create is a testament to our dedication to precision, performance, and style. From our historic mechanical movements to our modern connected watches.</p>
+    <a href="/about" class="btn-hero" style="width:fit-content; margin-top:1rem; padding: 0.8rem 2rem;">Read Our Story</a>
+  </div>
+  <div class="heritage-image"></div>
+</section>
